@@ -1,0 +1,144 @@
+@import url(reset.css);
+
+body {
+    /*background: url("../images/header_bg.gif");*/
+}
+
+.clear {
+    clear: both;
+}
+
+#wrapper {
+    border: 2px solid #ccc;
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+#header {
+    height: 100px;
+}
+
+#enter {
+    padding: 10px;
+    float: right;
+}
+
+#lang {
+    float: right;
+}
+
+#lang ul li a {
+    display: block;
+    width: 30px;
+    height: 22px;
+    padding: 0;
+    margin: 13px 10px;
+}
+
+#lang ul li a:hover {
+    border: 1px solid #6EE95B;
+    margin: 12px 9px;
+}
+
+#enter a {
+    font: 14px Arial, sans-serif;
+    color: #3C81E0;
+    text-decoration: none;
+}
+
+#enter a:hover {
+    color: #6EE95B;
+}
+
+#menu {
+    border: 1px solid #1c79a9;
+    height: 57px;
+    background: url("../images/menu_bg.png") repeat-x;
+}
+
+#menu li {
+    float: left;
+}
+
+.link a{
+    padding: 15px 10px;
+    display: block;
+    font: 16px Arial, sans-serif;
+    color: #FFEDE7;
+    text-decoration: none;
+}
+
+.link a:hover {
+    color: #6EE95B;
+}
+
+#right {
+    padding: 10px;
+    outline: 0px solid #c0c;
+    float: right;
+    width: 240px;
+}
+
+#content {
+    padding: 10px;
+    float: left;
+    outline: 0px solid #c0c;
+    width: 650px;
+}
+
+#content img {
+    float: left;
+    padding: 10px;
+}
+
+p {
+    font: 14px Arial, sans-serif;
+    color: #485D7A;
+}
+
+a {
+    font: 14px Arial, sans-serif;
+    color: #3C81E0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.bg {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    clear: both;
+    height: 1px;
+    list-style: none outside none;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.data h2 a {    
+    text-decoration: none;
+    color: #3C81E0;
+    font: 24px Arial,sans-serif;
+}
+
+.data h2 a:hover {
+    text-decoration: underline;
+}
+
+span {
+    font-weight: 700;
+}
+
+.data p {
+    padding: 0 0 0 5px;
+    font: 12px/1.8em Arial,sans-serif;
+    margin: 0;
+}
+
+h2 {
+    color: #3C81E0;
+    font: 24px Arial,sans-serif;
+}
