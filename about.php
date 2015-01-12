@@ -11,7 +11,7 @@ elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 else
     $_SESSION['lang'] = "ru";
 
-if($_COOKIE['auto'] == "yes"){
+if(!empty($_COOKIE['auto']) && $_COOKIE['auto'] == "yes"){
     $_SESSION['id'] = $_COOKIE['id'];
     $_SESSION['login'] = $_COOKIE['login'];
     $_SESSION['password'] = $_COOKIE['password'];
@@ -35,7 +35,7 @@ $ini_array = parse_ini_file("language/$_SESSION[lang].ini", true);
                 <p><?=$ini_array['about']['text']?></p>
             <div class="bg"></div>
             </div>
-                
+
             <div id="right"><?php include("blocks/number.php")?><div class="bg"></div></div>
         </div>
         <?php include("blocks/footer.php")?>

@@ -21,12 +21,12 @@ include ("blocks/db.php");
         <div id="body">
             <div id="content">
 <?php
-if($_SESSION['login']=='admin') echo "<p>{$ini_array['indexPage']['hello']} ".$_SESSION['login']."! {$ini_array['indexPage']['you']} <a href='add_news.php'>{$ini_array['indexPage']['add']}</a> {$ini_array['indexPage']['news']}.</p><div class='bg'></div>";
+if(!empty($_SESSION['login']) && $_SESSION['login']=='admin') echo "<p>{$ini_array['indexPage']['hello']} ".$_SESSION['login']."! {$ini_array['indexPage']['you']} <a href='add_news.php'>{$ini_array['indexPage']['add']}</a> {$ini_array['indexPage']['news']}.</p><div class='bg'></div>";
 if(empty($_SESSION['login'])) echo "<p>{$ini_array['indexPage']['guest']}</p><div class='bg'></div>";
     $result2 = mysql_query("SELECT * FROM data ORDER BY date DESC",$db)
         or die("Invalid query: " . mysql_error());
     $myrow2 = mysql_fetch_array($result2);
-    
+
     do {
         $description = implode(array_slice(explode('<br/>',wordwrap($myrow2['text'],150,'<br/>',false)),0,1)).'...';
         printf("<div class='data'>
@@ -41,7 +41,7 @@ if(empty($_SESSION['login'])) echo "<p>{$ini_array['indexPage']['guest']}</p><di
     while($myrow2 = mysql_fetch_array($result2));
 ?>
             </div>
-                
+
             <div id="right">
             <?php include("blocks/login_block.php")?>
             <?php include("blocks/number.php")?>

@@ -36,15 +36,15 @@ if(isset($_SESSION['login']) and isset($_SESSION['password'])){
     $password = $_SESSION['password'];
     $result2 = mysql_query("SELECT id FROM users WHERE login='$login' AND password='$password'",$db)
         or die("Invalid query: " . mysql_error());
-    $myrow2 = mysql_fetch_array($result2); 
+    $myrow2 = mysql_fetch_array($result2);
     if (empty($myrow2['id'])) { exit("Вход на эту страницу разрешен только зарегистрированным пользователям!");}
-    
+
     $result = mysql_query("SELECT * FROM users WHERE id='$myrow2[id]'",$db)
         or die("Invalid query: " . mysql_error());
     $myrow = mysql_fetch_array($result);
     if (empty($myrow['id'])) { exit("Пользователя не существует! Возможно он был удален.");}
-    
-    if($_GET['par']=='edit'){print <<<HERE
+
+    if(!empty($_GET['par']) && $_GET['par']=='edit'){print <<<HERE
         <form action="$_SERVER[PHP_SELF]" method="post">
             <p><label>Edit name<br/><input name="name" type="text" size="20" maxlength="20" value="$myrow[name]"/></label></p>
             <p><label>Edit surname<br/><input name="surname" type="text" size="20" maxlength="20" value="$myrow[surname]"/></label></p>
@@ -56,7 +56,7 @@ if(isset($_SESSION['login']) and isset($_SESSION['password'])){
         </form>
 HERE;
     }
-    elseif($_GET['par']=='del'){
+    elseif(!empty($_GET['par']) && $_GET['par']=='del'){
         $delete = mysql_query("DELETE FROM users WHERE id='$_GET[id]'")
             or die("Invalid query: " . mysql_error());
             session_unset();
@@ -67,11 +67,11 @@ HERE;
     else {
         echo "<h2>Your status</h2>";
         print "<img src='users/webik/avatar/default1.jpg'/><br/>";
-        if($myrow['name']){echo "<p>Your name: $myrow[name]</p>";}
-        if($myrow['surname']){echo "<p>Your surname: $myrow[surname]</p>";}
-        if($myrow['login']){echo "<p>Your login: $myrow[login]</p>";}
-        if($myrow['email']){echo "<p>Your email: $myrow[email]</p>";}
-        if($myrow['date']){echo "<p>Registered: $myrow[date]</p>";}
+        if(!empty($myrow['name'])){echo "<p>Your name: $myrow[name]</p>";}
+        if(!empty($myrow['surname'])){echo "<p>Your surname: $myrow[surname]</p>";}
+        if(!empty($myrow['login'])){echo "<p>Your login: $myrow[login]</p>";}
+        if(!empty($myrow['email'])){echo "<p>Your email: $myrow[email]</p>";}
+        if(!empty($myrow['date'])){echo "<p>Registered: $myrow[date]</p>";}
         echo "<div class='clear'></div>";
         echo "<a href='profile.php?par=edit&id=$myrow[id]'>Edit</a> | <a href='profile.php?par=del&id=$myrow[id]'>Delete</a>";
     }
@@ -79,7 +79,7 @@ HERE;
 else {exit("Вход на эту страницу разрешен только зарегистрированным пользователям!");}
 ?>
             </div>
-                
+
             <div id="right">
             <?php include("blocks/login_block.php")?>
             <?php include("blocks/number.php")?>
